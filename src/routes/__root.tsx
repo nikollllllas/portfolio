@@ -1,4 +1,5 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { SITE } from '../config/site'
 import Footer from '../components/footer'
 import Header from '../components/header'
 
@@ -15,12 +16,11 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Nikollas · Front-end & mobile',
+        title: SITE.title,
       },
       {
         name: 'description',
-        content:
-          'Portfólio minimalista — desenvolvimento front-end e mobile, projetos no GitHub e contato.',
+        content: SITE.metaDescription,
       },
     ],
     links: [
