@@ -6,13 +6,13 @@
   --bg: #f4f2ee;
   --surface: #ffffff;
   --surface-muted: rgba(20, 16, 30, 0.035);
-  --fg: #1a1524;
-  --fg-soft: #2e2838;
-  --muted: #6b6479;
-  --line: rgba(20, 16, 30, 0.1);
-  --line-strong: rgba(20, 16, 30, 0.16);
-  --primary: #5d4b8b;
-  --primary-fg: #5d4b8b;
+  --fg: #14101e;
+  --fg-soft: #2a2434;
+  --muted: #554f64;
+  --line: rgba(20, 16, 30, 0.14);
+  --line-strong: rgba(20, 16, 30, 0.22);
+  --primary: #4c3c75;
+  --primary-fg: #4c3c75;
   --primary-contrast: #ffffff;
   --grid: rgba(20, 16, 30, 0.05);
   --selection: color-mix(in oklab, var(--primary) 25%, transparent);
@@ -91,15 +91,17 @@ body::before {
   color: var(--fg);
 }
 
-a {
-  color: var(--primary-fg);
-  text-decoration-color: color-mix(in oklab, var(--primary-fg) 40%, transparent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
+@layer base {
+  a {
+    color: var(--primary-fg);
+    text-decoration-color: color-mix(in oklab, var(--primary-fg) 40%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
 
-a:hover {
-  color: color-mix(in oklab, var(--primary-fg) 80%, var(--fg));
+  a:hover {
+    color: color-mix(in oklab, var(--primary-fg) 80%, var(--fg));
+  }
 }
 
 code {
