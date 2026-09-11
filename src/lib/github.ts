@@ -1,18 +1,37 @@
 export const GITHUB_USERNAME = 'nikollllllas' as const
 
-export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}` as const
+export const GITHUB_PROFILE_URL =
+  `https://github.com/${GITHUB_USERNAME}` as const
 
-export const PORTFOLIO_HOME_REPO_LIMIT = 4 as const
+export const getRepoSocialImageUrl = (repoName: string): string =>
+  `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repoName}`
 
+export const PORTFOLIO_HOME_REPO_LIMIT = 5 as const
+
+// Ordered by priority: frontend/mobile first, then backend, then others —
+// Dart/Flutter apps go last on purpose (lowest priority in the queue).
 export const HOME_PINNED_REPOSITORY_NAMES = [
-  'tcc-flutter-teacher-app',
+  'rfinance-web',
   'lawyer-landing-page',
+  'rfinance-api',
+  'my-gold',
+  'tcc-flutter-teacher-app',
 ] as const
 
-export const HOME_PINNED_DESCRIPTION_FALLBACK: Readonly<Partial<Record<string, string>>> = {
+// Repos that should never appear on the home page, regardless of description/stars.
+export const HOME_EXCLUDED_REPOSITORY_NAMES = ['api-rocketnotes'] as const
+
+export const HOME_PINNED_DESCRIPTION_FALLBACK: Readonly<
+  Partial<Record<string, string>>
+> = {
   'tcc-flutter-teacher-app':
     'Aplicativo em Dart/Flutter do TCC — presença e frequência acadêmica.',
   'lawyer-landing-page': 'Landing page para escritório de advocacia.',
+  'rfinance-web': 'Aplicação web para controle financeiro pessoal.',
+  'rfinance-api': 'API para a aplicação de controle financeiro RFinance.',
+  // TODO: descrição inferida pelo nome do repositório — confirme/ajuste.
+  'my-gold':
+    'Aplicativo em Dart/Flutter para controle de investimentos em ouro.',
 }
 
 export type GitHubRepo = {
@@ -58,11 +77,13 @@ export const fetchUserRepos = async (): Promise<GitHubRepo[]> => {
 }
 
 export const filterPortfolioRepos = (repos: GitHubRepo[]): GitHubRepo[] => {
+  const excluded = new Set<string>(HOME_EXCLUDED_REPOSITORY_NAMES)
   return repos
-    .filter((repo) => !repo.fork)
-    .filter((repo) => repo.name !== GITHUB_USERNAME)
-    .filter((repo) => Boolean(repo.description?.trim()))
-    .filter((repo) => typeof repo.stargazers_count === 'number')
+    .filter(repo => !repo.fork)
+    .filter(repo => repo.name !== GITHUB_USERNAME)
+    .filter(repo => !excluded.has(repo.name))
+    .filter(repo => Boolean(repo.description?.trim()))
+    .filter(repo => typeof repo.stargazers_count === 'number')
     .sort((a, b) => {
       if (b.stargazers_count !== a.stargazers_count) {
         return b.stargazers_count - a.stargazers_count
@@ -73,7 +94,7 @@ export const filterPortfolioRepos = (repos: GitHubRepo[]): GitHubRepo[] => {
 
 export const selectHomeRepositories = (repos: GitHubRepo[]): GitHubRepo[] => {
   const pinnedSet = new Set<string>(HOME_PINNED_REPOSITORY_NAMES)
-  const byName = new Map(repos.map((r) => [r.name, r]))
+  const byName = new Map(repos.map(r => [r.name, r]))
 
   const pinned: GitHubRepo[] = []
   for (const name of HOME_PINNED_REPOSITORY_NAMES) {
@@ -84,7 +105,9 @@ export const selectHomeRepositories = (repos: GitHubRepo[]): GitHubRepo[] => {
     pinned.push(applyPinnedDescriptionFallback(repo))
   }
 
-  const describedPool = filterPortfolioRepos(repos).filter((r) => !pinnedSet.has(r.name))
+  const describedPool = filterPortfolioRepos(repos).filter(
+    r => !pinnedSet.has(r.name),
+  )
 
   const wildcardCount = Math.max(0, PORTFOLIO_HOME_REPO_LIMIT - pinned.length)
   const wildcards = [...describedPool]

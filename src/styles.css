@@ -14,6 +14,7 @@
   --primary: #4c3c75;
   --primary-fg: #4c3c75;
   --primary-contrast: #ffffff;
+  --destructive: #ae3b3b;
   --grid: rgba(20, 16, 30, 0.05);
   --selection: color-mix(in oklab, var(--primary) 25%, transparent);
 }
@@ -28,6 +29,7 @@ html.dark {
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.16);
   --primary-fg: color-mix(in oklab, var(--primary) 55%, white);
+  --destructive: #e17b7b;
   --grid: rgba(255, 255, 255, 0.04);
   --selection: color-mix(in oklab, var(--primary-fg) 30%, transparent);
 }
@@ -42,6 +44,22 @@ html.dark {
   --color-canvas: var(--bg);
   --color-surface: var(--surface);
   --color-line: var(--line);
+
+  /* shadcn/ui component tokens — aliased to the tokens above, not a second palette */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--fg);
+  --color-primary-foreground: var(--primary-contrast);
+  --color-accent: var(--surface-muted);
+  --color-accent-foreground: var(--fg);
+  --color-secondary: var(--surface-muted);
+  --color-secondary-foreground: var(--fg);
+  --color-muted-foreground: var(--muted);
+  --color-destructive: var(--destructive);
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--primary-fg);
 }
 
 * {
@@ -83,7 +101,11 @@ body::before {
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent 75%);
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 30%,
+    black,
+    transparent 75%
+  );
 }
 
 ::selection {
@@ -92,9 +114,25 @@ body::before {
 }
 
 @layer base {
+  /* shadcn/ui components (Card, Button outline, Badge outline, Alert) use the
+     bare `border` utility and expect it to default to --color-border — without
+     this reset it falls back to currentColor, which reads as a much harder
+     edge than the rest of the site's hairline borders. */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
   a {
     color: var(--primary-fg);
-    text-decoration-color: color-mix(in oklab, var(--primary-fg) 40%, transparent);
+    text-decoration-color: color-mix(
+      in oklab,
+      var(--primary-fg) 40%,
+      transparent
+    );
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
@@ -124,6 +162,12 @@ pre code {
   margin-inline: auto;
 }
 
+@media (min-width: 1024px) {
+  .page-wrap {
+    width: min(1200px, calc(100% - 3rem));
+  }
+}
+
 @layer components {
   .section-divider {
     border-top: 1px solid var(--line);
@@ -135,12 +179,6 @@ pre code {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
-  }
-
-  .surface {
-    border: 1px solid var(--line);
-    background: var(--surface);
-    border-radius: 14px;
   }
 
   .brand-link {
@@ -189,79 +227,14 @@ pre code {
     transform: scaleX(1);
   }
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border-radius: 9999px;
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition:
-      background-color 160ms ease,
-      border-color 160ms ease,
-      color 160ms ease;
-  }
-
-  .btn-primary {
-    background: var(--primary);
-    color: var(--primary-contrast);
-    border-color: var(--primary);
-  }
-
-  .btn-primary:hover {
-    background: color-mix(in oklab, var(--primary) 85%, white);
-    color: var(--primary-contrast);
-  }
-
-  .btn-ghost {
-    color: var(--fg-soft);
-    border-color: var(--line-strong);
-  }
-
-  .btn-ghost:hover {
-    color: var(--fg);
-    border-color: var(--primary-fg);
-  }
-
-  .btn-sm {
-    padding: 0.45rem 0.9rem;
-    font-size: 0.8rem;
-  }
-
-  .icon-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.25rem;
-    width: 2.25rem;
-    border-radius: 9999px;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    transition:
-      color 160ms ease,
-      border-color 160ms ease;
-  }
-
-  .icon-btn:hover {
-    color: var(--fg);
-    border-color: var(--line-strong);
-  }
-
   .project-card {
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     border: 1px solid var(--line);
     background: var(--surface);
     border-radius: 14px;
-    padding: 1.25rem;
     transition:
       border-color 180ms ease,
       transform 180ms ease;
@@ -272,26 +245,26 @@ pre code {
     transform: translateY(-2px);
   }
 
-  .tag {
-    display: inline-block;
-    border: 1px solid var(--line);
+  .project-card-media {
+    aspect-ratio: 1200 / 630;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
     background: var(--surface-muted);
-    border-radius: 9999px;
-    padding: 0.18rem 0.55rem;
-    font-size: 11px;
-    color: var(--muted);
+    overflow: hidden;
   }
 
-  .callout {
+  .project-card-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-card-body {
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    border: 1px solid var(--line);
-    background: var(--surface-muted);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    font-size: 0.875rem;
-    color: var(--fg-soft);
+    flex: 1;
+    flex-direction: column;
+    padding: 1.25rem;
   }
 
   .footer {
@@ -300,7 +273,7 @@ pre code {
 }
 
 @media (min-width: 640px) {
-  .project-card {
+  .project-card-body {
     padding: 1.5rem;
   }
 }

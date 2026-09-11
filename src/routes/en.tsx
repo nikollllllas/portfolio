@@ -3,13 +3,13 @@ import { HomePage } from '#/components/portfolio/home-page'
 import { content } from '#/i18n/content'
 import { seo } from '#/lib/seo'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/en')({
   head: () =>
     seo({
-      title: content.pt.seo.title,
-      description: content.pt.seo.description,
-      path: '/',
-      locale: 'pt',
+      title: content.en.seo.title,
+      description: content.en.seo.description,
+      path: '/en',
+      locale: 'en',
     }),
   component: HomePage,
 })

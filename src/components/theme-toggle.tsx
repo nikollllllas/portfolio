@@ -1,10 +1,14 @@
 import { Moon, Sun } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useLocale } from '#/hooks/use-locale'
+import { Button } from '@/components/ui/button'
 
 type Theme = 'light' | 'dark'
 
 function getSystemTheme(): Theme {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light'
 }
 
 function readTheme(): Theme {
@@ -18,6 +22,7 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeToggle() {
+  const { t } = useLocale()
   const [theme, setTheme] = useState<Theme | null>(null)
 
   useEffect(() => {
@@ -42,21 +47,23 @@ export function ThemeToggle() {
     setTheme(next)
   }
 
-  const label = theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'
+  const label = theme === 'dark' ? t.theme.light : t.theme.dark
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
+      size="icon"
       onClick={toggle}
       aria-label={label}
       title={label}
-      className="icon-btn"
+      className="rounded-full border border-[var(--line)] text-muted hover:border-[var(--line-strong)] hover:bg-transparent hover:text-fg"
     >
       {theme === 'dark' ? (
         <Sun className="h-4 w-4" aria-hidden />
       ) : (
         <Moon className="h-4 w-4" aria-hidden />
       )}
-    </button>
+    </Button>
   )
 }
