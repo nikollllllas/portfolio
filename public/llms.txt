@@ -1,0 +1,15 @@
+# Nikollas Ohta
+
+> Portfólio pessoal de Nikollas Ohta, desenvolvedor front-end com atuação em mobile e web (React, TypeScript). Interfaces acessíveis e performáticas, projetos de código aberto e contato direto.
+
+Este site é uma página única (single page) com as seções: início, projetos, experiência, sobre e contato. Disponível em português (padrão) e inglês.
+
+## Páginas
+
+- [Início (PT)](https://nikollas.dev/): apresentação, projetos em destaque (carregados via API pública do GitHub), experiência profissional, sobre e contato.
+- [Home (EN)](https://nikollas.dev/en): English version of the same page.
+
+## Contato
+
+- GitHub: https://github.com/nikollllllas
+- LinkedIn: https://www.linkedin.com/in/nikollas-ohta/

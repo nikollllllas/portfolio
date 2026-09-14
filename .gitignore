@@ -11,3 +11,12 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+
+# AI tooling (local machine/session config, not project source)
+.mcp.json
+.claude/settings.local.json
+.claude.json
+.cursor/
+.windsurf/
+.cline/
+CLAUDE.local.md

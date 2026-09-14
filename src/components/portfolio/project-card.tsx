@@ -1,4 +1,10 @@
+import { motion } from 'framer-motion'
 import { ExternalLink, Github, Star } from 'lucide-react'
+import { useState } from 'react'
+import { useLocale } from '#/hooks/use-locale'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { getRepoSocialImageUrl } from '@/lib/github'
 
 export type ProjectCardProps = {
   name: string
@@ -19,58 +25,80 @@ export const ProjectCard = ({
   homepage,
   stargazersCount,
 }: ProjectCardProps) => {
+  const { t } = useLocale()
+  const [imageFailed, setImageFailed] = useState(false)
   const visibleTopics = topics.slice(0, 5)
   const demoUrl = homepage?.trim() || null
 
   return (
-    <article className="project-card">
-      <header className="mb-3 flex items-start justify-between gap-3">
-        <div>
-          <h3 className="text-lg font-semibold tracking-tight text-fg">{name}</h3>
-          <div className="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-muted">
-            {language && <span>{language}</span>}
-            <span className="inline-flex items-center gap-1">
-              <Star className="h-3.5 w-3.5" aria-hidden />
-              {stargazersCount}
-            </span>
-          </div>
+    <motion.article
+      className="project-card"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5 }}
+    >
+      {!imageFailed && (
+        <div className="project-card-media">
+          <img
+            src={getRepoSocialImageUrl(name)}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            onError={() => setImageFailed(true)}
+          />
         </div>
-      </header>
-
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">{description}</p>
-
-      {visibleTopics.length > 0 && (
-        <ul className="mb-4 flex flex-wrap gap-1.5" aria-label="Tópicos">
-          {visibleTopics.map((topic) => (
-            <li key={topic}>
-              <span className="tag">{topic}</span>
-            </li>
-          ))}
-        </ul>
       )}
+      <div className="project-card-body">
+        <header className="mb-3 flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-lg font-semibold tracking-tight text-fg">
+              {name}
+            </h3>
+            <div className="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-muted">
+              {language && <span>{language}</span>}
+              <span className="inline-flex items-center gap-1">
+                <Star className="h-3.5 w-3.5" aria-hidden />
+                {stargazersCount}
+              </span>
+            </div>
+          </div>
+        </header>
 
-      <div className="mt-auto flex flex-wrap gap-2">
-        <a
-          href={htmlUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-ghost btn-sm"
-        >
-          <Github className="h-4 w-4" aria-hidden />
-          Repositório
-        </a>
-        {demoUrl && (
-          <a
-            href={demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary btn-sm"
+        <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">
+          {description}
+        </p>
+
+        {visibleTopics.length > 0 && (
+          <ul
+            className="mb-4 flex flex-wrap gap-1.5"
+            aria-label={t.projects.topics}
           >
-            Live demo
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-          </a>
+            {visibleTopics.map(topic => (
+              <li key={topic}>
+                <Badge variant="outline">{topic}</Badge>
+              </li>
+            ))}
+          </ul>
         )}
+
+        <div className="mt-auto flex flex-wrap gap-2">
+          <Button asChild variant="outline" size="sm" className="rounded-full">
+            <a href={htmlUrl} target="_blank" rel="noopener noreferrer">
+              <Github className="h-4 w-4" aria-hidden />
+              {t.projects.repository}
+            </a>
+          </Button>
+          {demoUrl && (
+            <Button asChild size="sm" className="rounded-full">
+              <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+                {t.projects.liveDemo}
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+              </a>
+            </Button>
+          )}
+        </div>
       </div>
-    </article>
+    </motion.article>
   )
 }
