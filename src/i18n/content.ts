@@ -71,11 +71,16 @@ export const content = {
     },
     about: {
       kicker: 'Sobre',
-      heading: 'Código claro, interfaces com intenção.',
+      heading:
+        'Da primeira linha de código ao produto que chega às mãos de alguém.',
       paragraphs: [
-        'Sou desenvolvedor front-end com foco em mobile e web — principalmente React e TypeScript. Gosto de entregar interfaces rápidas, acessíveis e bem estruturadas, com design system, testes e performance quando o contexto exige, sempre priorizando código claro e fácil de evoluir.',
-        'Fora do teclado, equilibro estudo, projetos criativos e tempo com a família — e levo isso para o lado profissional: tecnologia aplicada para resolver problemas reais.',
+        'Desenvolvedor de software apaixonado por construir para a Web, transformando ideias e problemas em experiências rápidas, acessíveis e bem pensadas — com código que eu também tenha orgulho de manter.',
+        'Sou o Nikollas, desenvolvedor Front-End na E/Code Digital desde maio de 2024, onde trabalho no dia a dia com React, TypeScript, Next.js, TailwindCSS e TanStack Query — sempre buscando entregar interfaces sólidas e bem testadas (uso Playwright para E2E).',
+        'Formado em Sistemas de Informação pela UNIPAR. Antes de entrar na área de desenvolvimento, fui estagiário de T.I. na Secretaria Municipal de Saúde de Umuarama — um período que me ajudou a entender tecnologia aplicada a problemas reais, fora da bolha do código.',
+        'Gosto de ir além do trabalho: mantenho o RFinance, um projeto pessoal de finanças construído do zero (frontend em Next.js na Vercel, backend em NestJS com Drizzle ORM/PostgreSQL no Render) — meu espaço para experimentar arquitetura e ideias.',
       ],
+      photoAlt: 'Foto de Nikollas Ohta, desenvolvedor front-end',
+      stackLabel: 'Stack técnica',
     },
     contact: {
       kicker: 'Contato',
@@ -164,11 +169,15 @@ export const content = {
     },
     about: {
       kicker: 'About',
-      heading: 'Clean code, intentional interfaces.',
+      heading: "From the first line of code to a product in someone's hands.",
       paragraphs: [
-        "I'm a front-end developer focused on mobile and web — mainly React and TypeScript. I like shipping fast, accessible, well-structured interfaces, with design systems, tests, and performance work when the context calls for it, always prioritizing code that's clear and easy to evolve.",
-        'Away from the keyboard, I balance studying, creative projects, and family time — and I bring that mindset to work: technology applied to solve real problems.',
+        "A software developer passionate about building for the Web, turning ideas and problems into fast, accessible, well-thought-out experiences — with code I'm also proud to maintain.",
+        "I'm Nikollas, a Front-End Developer at E/Code Digital since May 2024, working daily with React, TypeScript, Next.js, TailwindCSS, and TanStack Query — always aiming for solid, well-tested interfaces (Playwright for E2E).",
+        'I hold a degree in Information Systems from UNIPAR. Before moving into development, I was an IT intern at the Umuarama Municipal Health Department — an experience that taught me to apply technology to real problems, outside the coding bubble.',
+        'I like going beyond the day job: I maintain RFinance, a personal finance project built from scratch (Next.js frontend on Vercel, NestJS backend with Drizzle ORM/PostgreSQL on Render) — my space to experiment with architecture and ideas.',
       ],
+      photoAlt: 'Photo of Nikollas Ohta, front-end developer',
+      stackLabel: 'Tech stack',
     },
     contact: {
       kicker: 'Contact',

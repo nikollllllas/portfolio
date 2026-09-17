@@ -8,9 +8,9 @@ export function HomePage() {
   return (
     <main className="relative z-10">
       <HeroSection />
+      <AboutSection />
       <ProjectsSection />
       <ExperienceSection />
-      <AboutSection />
       <ContactSection />
     </main>
   )

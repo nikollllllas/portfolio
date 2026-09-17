@@ -46,7 +46,7 @@ describe('HomePage', () => {
     ).toBeInTheDocument()
     expect(
       screen.getByRole('heading', {
-        name: 'Código claro, interfaces com intenção.',
+        name: 'Da primeira linha de código ao produto que chega às mãos de alguém.',
       }),
     ).toBeInTheDocument()
     expect(
