@@ -34,6 +34,13 @@ export const HOME_PINNED_DESCRIPTION_FALLBACK: Readonly<
     'Aplicativo em Dart/Flutter para controle de investimentos em ouro.',
 }
 
+export const HOME_PINNED_HOMEPAGE_OVERRIDE: Readonly<
+  Partial<Record<string, string>>
+> = {
+  'rfinance-web': 'https://rfinance.vercel.app',
+  'rfinance-api': 'https://rfinance-api.onrender.com/docs',
+}
+
 export type GitHubRepo = {
   id: number
   name: string
@@ -66,6 +73,14 @@ const applyPinnedDescriptionFallback = (repo: GitHubRepo): GitHubRepo => {
     return repo
   }
   return { ...repo, description: fallback }
+}
+
+const applyPinnedHomepageOverride = (repo: GitHubRepo): GitHubRepo => {
+  const override = HOME_PINNED_HOMEPAGE_OVERRIDE[repo.name]
+  if (!override) {
+    return repo
+  }
+  return { ...repo, homepage: override }
 }
 
 export const fetchUserRepos = async (): Promise<GitHubRepo[]> => {
@@ -102,7 +117,7 @@ export const selectHomeRepositories = (repos: GitHubRepo[]): GitHubRepo[] => {
     if (!repo || repo.fork || repo.name === GITHUB_USERNAME) {
       continue
     }
-    pinned.push(applyPinnedDescriptionFallback(repo))
+    pinned.push(applyPinnedHomepageOverride(applyPinnedDescriptionFallback(repo)))
   }
 
   const describedPool = filterPortfolioRepos(repos).filter(
