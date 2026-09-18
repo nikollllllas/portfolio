@@ -7,7 +7,7 @@ export const content = {
     seo: {
       title: 'Nikollas · Front-end & mobile',
       description:
-        'Site pessoal de Nikollas Ohta — front-end e mobile com React e TypeScript. Interfaces acessíveis e performáticas, projetos no GitHub e contato.',
+        'Site pessoal de Nikollas Ohta, front-end e mobile com React e TypeScript. Interfaces acessíveis e performáticas, projetos no GitHub e contato.',
     },
     nav: {
       projects: 'Projetos',
@@ -18,7 +18,7 @@ export const content = {
     hero: {
       heading: 'Código claro. Produtos que importam.',
       subheading:
-        'Front-end e mobile com foco em experiências rápidas, acessíveis e bem arquitetadas — da interface ao que o usuário sente no dia a dia.',
+        'Front-end e mobile com foco em experiências rápidas, acessíveis e bem arquitetadas, da interface ao que o usuário sente no dia a dia.',
       viewProjects: 'Ver projetos',
       contact: 'Contato',
       downloadResume: 'Baixar currículo',
@@ -46,7 +46,7 @@ export const content = {
           role: 'Desenvolvedor Front-End',
           period: 'Maio de 2024 – Presente',
           description:
-            'Desenvolvimento front-end de mais de dez sistemas — backoffice e landing pages —, com foco em acessibilidade (WCAG) e performance (Web Vitals, Lighthouse). Cobertura de testes unitários e automatizados, componentização, integração com APIs RESTful e desenvolvimento ágil (SCRUM).',
+            'Desenvolvimento front-end de mais de dez sistemas, backoffice e landing pages, com foco em acessibilidade (WCAG) e performance (Web Vitals, Lighthouse). Cobertura de testes unitários e automatizados, componentização, integração com APIs RESTful e desenvolvimento ágil (SCRUM).',
           tools: [
             'Git',
             'GitHub',
@@ -74,10 +74,10 @@ export const content = {
       heading:
         'Da primeira linha de código ao produto que chega às mãos de alguém.',
       paragraphs: [
-        'Desenvolvedor de software apaixonado por construir para a Web, transformando ideias e problemas em experiências rápidas, acessíveis e bem pensadas — com código que eu também tenha orgulho de manter.',
-        'Sou o Nikollas, desenvolvedor Front-End na E/Code Digital desde maio de 2024, onde trabalho no dia a dia com React, TypeScript, Next.js, TailwindCSS e TanStack Query — sempre buscando entregar interfaces sólidas e bem testadas (uso Playwright para E2E).',
-        'Formado em Sistemas de Informação pela UNIPAR. Antes de entrar na área de desenvolvimento, fui estagiário de T.I. na Secretaria Municipal de Saúde de Umuarama — um período que me ajudou a entender tecnologia aplicada a problemas reais, fora da bolha do código.',
-        'Gosto de ir além do trabalho: mantenho o RFinance, um projeto pessoal de finanças construído do zero (frontend em Next.js na Vercel, backend em NestJS com Drizzle ORM/PostgreSQL no Render) — meu espaço para experimentar arquitetura e ideias.',
+        'Desenvolvedor de software apaixonado por construir para a Web, transformando ideias e problemas em experiências rápidas, acessíveis e bem pensadas, com código que eu também tenha orgulho de manter.',
+        'Sou o Nikollas, desenvolvedor Front-End na E/Code Digital desde maio de 2024, onde trabalho no dia a dia com React, TypeScript, Next.js, TailwindCSS e TanStack Query, sempre buscando entregar interfaces sólidas e bem testadas (uso Playwright para E2E).',
+        'Formado em Sistemas de Informação pela UNIPAR. Antes de entrar na área de desenvolvimento, fui estagiário de T.I. na Secretaria Municipal de Saúde de Umuarama, um período que me ajudou a entender tecnologia aplicada a problemas reais, fora da bolha do código.',
+        'Gosto de ir além do trabalho: mantenho o RFinance, um projeto pessoal de finanças construído do zero (frontend em Next.js na Vercel, backend em NestJS com Drizzle ORM/PostgreSQL no Render), meu espaço para experimentar arquitetura e ideias.',
       ],
       photoAlt: 'Foto de Nikollas Ohta, desenvolvedor front-end',
       stackLabel: 'Stack técnica',
@@ -85,7 +85,7 @@ export const content = {
     contact: {
       kicker: 'Contato',
       heading: 'Vamos conversar',
-      subheading: 'Links diretos — sem formulários.',
+      subheading: 'Links diretos, sem formulários.',
       github: 'GitHub',
       linkedin: 'LinkedIn',
       email: 'E-mail',
@@ -106,7 +106,7 @@ export const content = {
     seo: {
       title: 'Nikollas · Front-end & mobile',
       description:
-        "Nikollas Ohta's personal site — front-end and mobile engineering with React and TypeScript. Accessible, performant interfaces, GitHub projects, and contact info.",
+        "Nikollas Ohta's personal site, front-end and mobile engineering with React and TypeScript. Accessible, performant interfaces, GitHub projects, and contact info.",
     },
     nav: {
       projects: 'Projects',
@@ -117,7 +117,7 @@ export const content = {
     hero: {
       heading: 'Clean code. Products that matter.',
       subheading:
-        'Front-end and mobile engineering focused on fast, accessible, well-architected experiences — from the interface down to how it feels to use.',
+        'Front-end and mobile engineering focused on fast, accessible, well-architected experiences, from the interface down to how it feels to use.',
       viewProjects: 'View projects',
       contact: 'Contact',
       downloadResume: 'Download resume',
@@ -144,7 +144,7 @@ export const content = {
           role: 'Front-End Developer',
           period: 'May 2024 – Present',
           description:
-            'Front-end development for more than ten systems — back-office platforms and landing pages — focusing on WCAG accessibility and performance (Web Vitals, Lighthouse). Unit and automated test coverage, component-based architecture, RESTful API integration, and agile SCRUM development.',
+            'Front-end development for more than ten systems, back-office platforms and landing pages, focusing on WCAG accessibility and performance (Web Vitals, Lighthouse). Unit and automated test coverage, component-based architecture, RESTful API integration, and agile SCRUM development.',
           tools: [
             'Git',
             'GitHub',
@@ -171,10 +171,10 @@ export const content = {
       kicker: 'About',
       heading: "From the first line of code to a product in someone's hands.",
       paragraphs: [
-        "A software developer passionate about building for the Web, turning ideas and problems into fast, accessible, well-thought-out experiences — with code I'm also proud to maintain.",
-        "I'm Nikollas, a Front-End Developer at E/Code Digital since May 2024, working daily with React, TypeScript, Next.js, TailwindCSS, and TanStack Query — always aiming for solid, well-tested interfaces (Playwright for E2E).",
-        'I hold a degree in Information Systems from UNIPAR. Before moving into development, I was an IT intern at the Umuarama Municipal Health Department — an experience that taught me to apply technology to real problems, outside the coding bubble.',
-        'I like going beyond the day job: I maintain RFinance, a personal finance project built from scratch (Next.js frontend on Vercel, NestJS backend with Drizzle ORM/PostgreSQL on Render) — my space to experiment with architecture and ideas.',
+        "A software developer passionate about building for the Web, turning ideas and problems into fast, accessible, well-thought-out experiences, with code I'm also proud to maintain.",
+        "I'm Nikollas, a Front-End Developer at E/Code Digital since May 2024, working daily with React, TypeScript, Next.js, TailwindCSS, and TanStack Query, always aiming for solid, well-tested interfaces (Playwright for E2E).",
+        'I hold a degree in Information Systems from UNIPAR. Before moving into development, I was an IT intern at the Umuarama Municipal Health Department, an experience that taught me to apply technology to real problems, outside the coding bubble.',
+        'I like going beyond the day job: I maintain RFinance, a personal finance project built from scratch (Next.js frontend on Vercel, NestJS backend with Drizzle ORM/PostgreSQL on Render), my space to experiment with architecture and ideas.',
       ],
       photoAlt: 'Photo of Nikollas Ohta, front-end developer',
       stackLabel: 'Tech stack',
@@ -182,7 +182,7 @@ export const content = {
     contact: {
       kicker: 'Contact',
       heading: "Let's talk",
-      subheading: 'Direct links — no forms.',
+      subheading: 'Direct links, no forms.',
       github: 'GitHub',
       linkedin: 'LinkedIn',
       email: 'Email',
